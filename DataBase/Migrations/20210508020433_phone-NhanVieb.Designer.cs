@@ -4,14 +4,16 @@ using DataBase.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataBase.Migrations
 {
     [DbContext(typeof(QuanLyDBContext))]
-    partial class QuanLyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210508020433_phone-NhanVieb")]
+    partial class phoneNhanVieb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,9 +135,6 @@ namespace DataBase.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DIACHI")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EMAIL")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")

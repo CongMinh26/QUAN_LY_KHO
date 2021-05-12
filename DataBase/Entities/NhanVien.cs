@@ -15,9 +15,11 @@ namespace DataBase.Entities
         public string HO { get; set; }
         public string TEN { get; set; }
         public string DIACHI { get; set; }
+        public string PHONE { get; set; }
         public System.DateTime NGAYSINH { get; set; }
         public double LUONG { get; set; }
- 
+
+        public string EMAIL { get; set; }
         public string TAIKHOAN { get; set; }
 
         public string MATKHAU { get; set; }
