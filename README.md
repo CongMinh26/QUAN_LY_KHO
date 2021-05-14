@@ -1,3 +1,2 @@
-# QUAN_LY_KHO
-Web API
-Web APP
+Phát triển phần mềm hướng dịch vụ
+Tạo Web service cho WebApp và Android
