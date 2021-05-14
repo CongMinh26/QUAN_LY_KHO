@@ -12,15 +12,15 @@ namespace ViewModel.Common
         {
         }
 
-        public ApiErrorResult(string message)
+        public ApiErrorResult(string Status ,string Message)
         {
-            IsSuccessed = false;
-            Message = message;
+            status = Status;
+            message = Message;
         }
 
         public ApiErrorResult(string[] validationErrors)
         {
-            IsSuccessed = false;
+            status = "Eror";
             ValidationErrors = validationErrors;
         }
     }

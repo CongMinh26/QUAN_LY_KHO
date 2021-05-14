@@ -8,36 +8,24 @@ namespace ViewModel.User
     public class NhanVienVm
     {
 
-        public int MANV { get; set; }
-
-        [Display(Name = "Họ")]
-        public string HO { get; set; }
+        public int id { get; set; }
 
         [Display(Name = "Tên")]
-        public string TEN { get; set; }
+        public string name { get; set; }
 
         [Display(Name = "Số điện thoại")]
-        public string PHONE { get; set; }
-
-        [Display(Name = "Tài khoản")]
-        public string TAIKHOAN { get; set; }
+        public string phone { get; set; }
 
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string email { get; set; }
 
         [Display(Name = "Ngày sinh")]
-        public System.DateTime NGAYSINH { get; set; }
+        public string birthday { get; set; }
 
         [Display(Name = "Địa chỉ")]
-        public string DIACHI { get; set; }
+        public string address { get; set; }
         public IList<string> Roles { get; set; }
 
 
-       
-        
-        
-       
-
-        
     }
 }

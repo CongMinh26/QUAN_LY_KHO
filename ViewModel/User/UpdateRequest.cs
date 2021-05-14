@@ -7,22 +7,19 @@ namespace ViewModel.User
 {
     public class UpdateRequest
     {
-        public String  MANV { get; set; }
+        public String  id { get; set; }
 
-        [Display(Name = "Tên")]
-        public string TEN { get; set; }
-
-        [Display(Name = "Họ")]
-        public string HO { get; set; }
+        [Display(Name = "Họ Tên")]
+        public string name { get; set; }
 
         [Display(Name = "Ngày sinh")]
         [DataType(DataType.Date)]
         public System.DateTime NGAYSINH { get; set; }
 
-        [Display(Name = "Hòm thư")]
-        public string EMAIL { get; set; }
+        [Display(Name = "Email")]
+        public string email { get; set; }
 
         [Display(Name = "Số điện thoại")]
-        public string PHONE { get; set; }
+        public string phone { get; set; }
     }
 }

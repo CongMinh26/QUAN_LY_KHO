@@ -6,6 +6,8 @@ namespace ViewModel.User
 {
     public class DeleteRequest
     { 
-        public string MANV { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
     }
 }

@@ -7,15 +7,16 @@ namespace ViewModel.Common
 
     public class ApiSuccessResult<T> : ApiResult<T>
     {
-        public ApiSuccessResult(T resultObj)
+        public ApiSuccessResult(string status,T data,string message)
         {
-            IsSuccessed = true;
-            ResultObj = resultObj;
+            this.status = status;
+            this.data = data;
+            this.message = message;
         }
 
         public ApiSuccessResult()
         {
-            IsSuccessed = true;
+            status = "";
         }
     }
 }
