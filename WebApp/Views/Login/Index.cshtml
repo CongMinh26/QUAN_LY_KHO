@@ -3,7 +3,7 @@
 @using ViewModel.User
 @model LoginRequest
 
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,9 +25,9 @@
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
                                 <div class="card-header"><h3 class="text-center font-weight-light my-4">Đăng nhập</h3></div>
                                 <div class="card-body">
-                                    <form asp-action="Index" asp-controller="Login" method="post">
+                                    <form asp-action="Index" asp-controller="Login" method="post">-->
                                         @*thông báo lỗi đăng nhập*@
-                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <!--<div asp-validation-summary="All" class="text-danger"></div>
                                         <div class="form-group">
                                             <label class="small mb-1">Tài khoản</label>
                                             <input class="form-control py-4" asp-for="email" type="text" placeholder="Nhập tài khoản" />
@@ -77,4 +77,64 @@
     <script src="/js/scripts.js"></script>
 </body>
 
+</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVC6_Seed_Project</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/css/animate.css" />
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/css/animate.css" />
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    </environment>
+
+
+</head>
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">IN+</h1>
+
+            </div>
+            <h3>Welcome to IN+</h3>
+
+            <form class="m-t" role="form" asp-action="Index" asp-controller="Login" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <input class="form-control py-4" asp-for="email" type="text" placeholder="Nhập tài khoản" />
+                </div>
+                <div class="form-group">
+                    <input class="form-control py-4" asp-for="password" type="password" placeholder="Nhập mật khẩu" />
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" asp-for="remember" type="checkbox" />
+                        <label class="custom-control-label">Nhớ mật khẩu</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                <a href="#"><small>Quên mật khẩu ?</small></a>
+                <a class="btn btn-sm btn-white btn-block" href="@Url.Action("Create", "User" )">Tạo tài khoản</a>
+            </form>
+            <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2021</small> </p>
+        </div>
+    </div>
+
+</body>
 </html>

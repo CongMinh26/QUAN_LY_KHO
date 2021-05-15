@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace WebApp.Service
 {
     public class Base
     {
+        private const string linkApi = "https://lit-reaches-20158.herokuapp.com";
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -26,14 +28,8 @@ namespace WebApp.Service
 
         protected async Task<TResponse> GetAsync<TResponse>(string url)
         {
-           /* var sessions = _httpContextAccessor
-                .HttpContext
-                .Session
-                .GetString(SystemConstants.AppSettings.Token);*/
-
             var client = _httpClientFactory.CreateClient();
             client.BaseAddress = new Uri("https://lit-reaches-20158.herokuapp.com");
-            /*client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", sessions);*/
             var response = await client.GetAsync(url);
             var body = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
@@ -44,6 +40,37 @@ namespace WebApp.Service
                 return myDeserializedObjList;
             }
             return JsonConvert.DeserializeObject<TResponse>(body);
+        }
+
+        protected async Task<TResponse> AddAsync<TResponse>(string url,object request)
+        {
+            var json = JsonConvert.SerializeObject(request);
+            var httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(linkApi);
+            var response = await client.PostAsync(url, httpContent);
+            var body = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                TResponse myDeserializedObjList = (TResponse)JsonConvert.DeserializeObject(body,
+                    typeof(TResponse));
+
+                return myDeserializedObjList;
+            }
+            return JsonConvert.DeserializeObject<TResponse>(body);
+        }
+        public async Task<bool> Delete(string url)
+        {
+         
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri(linkApi);         
+            var response = await client.DeleteAsync(url);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
         public async Task<List<T>> GetListAsync<T>(string url, bool requiredLogin = false)

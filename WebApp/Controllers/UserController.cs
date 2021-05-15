@@ -44,7 +44,7 @@ namespace WebApp.Controllers
                 return View();
             }
 
-            return RedirectToAction("Index","User");
+            return RedirectToAction("Index","Login");
         }
 
         [HttpGet]
@@ -82,8 +82,7 @@ namespace WebApp.Controllers
                 name = result.data.name,
                 phone = result.data.phone,
                 email = result.data.email,
-                birthday = result.data.birthday,
-                address = result.data.address
+                birthday = result.data.birthday
             };
                 return View(UpdateRequest);
 
@@ -92,7 +91,7 @@ namespace WebApp.Controllers
         public async Task<IActionResult> Edit(int id,NhanVienVm request)
         {
             var result = await _userApiClient.Update(id,request);
-          if(result.data == null)
+          if(result.status.Equals("1") == true)
             {
               
                 return RedirectToAction("Index");

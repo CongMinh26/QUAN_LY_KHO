@@ -28,6 +28,7 @@ namespace WebApp
         {
             services.AddHttpClient();
             services.AddTransient<IUserApiClient, UserApiClient>();
+            services.AddTransient<IProductApiClient, ProductApiClient>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllersWithViews();
 
