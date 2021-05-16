@@ -6,6 +6,8 @@ namespace ViewModel.Common
 {
     public class PagingRequestBase 
     {
+        public string Keyword { get; set; }
+
         // thuộc tính của 1 trang
         public int PageIndex { get; set; }
 

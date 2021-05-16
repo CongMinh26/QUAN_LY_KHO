@@ -14,7 +14,11 @@ namespace WebApp.Service
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IConfiguration _configuration;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        protected ProductApiClient(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor, IConfiguration configuration) : base(httpClientFactory, httpContextAccessor, configuration)
+
+        public ProductApiClient(IHttpClientFactory httpClientFactory,
+                   IHttpContextAccessor httpContextAccessor,
+                    IConfiguration configuration)
+              : base(httpClientFactory, httpContextAccessor, configuration)
         {
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
@@ -33,20 +37,22 @@ namespace WebApp.Service
             return data;
         }
 
-        public Task<ApiResult<ProductVm>> Delete(int id)
+        public async Task<ApiResult<ProductVm>> Delete(int id)
         {
-            throw new NotImplementedException();
+            var data = await Delete<ApiResult<ProductVm>>($"api/products/{id}");
+            return data;
         }
 
-     
-        public Task<ApiResult<ProductVm>> GetById(int id)
+        public async Task<ApiResult<ProductVm>> Update(int id, ProductVm product)
         {
-            throw new NotImplementedException();
+            var data = await UpdateAsync<ApiResult<ProductVm>>($"api/products/{id}",product);
+            return data;
         }
 
-        public Task<ApiResult<ProductVm>> Update(int id, ProductVm product)
+        public async Task<ApiResult<ProductVm>> GetById(int id)
         {
-            throw new NotImplementedException();
+            var data = await GetAsync<ApiResult<ProductVm>>($"api/products/{id}");
+            return data;
         }
     }
 }

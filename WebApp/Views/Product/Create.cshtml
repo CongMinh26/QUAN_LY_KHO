@@ -1,0 +1,99 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using ViewModel.Common
+@model ViewModel.Product.ProductVm
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li><a class="nav-link active" data-toggle="tab" href="#tab-1"> Thông tin sản phẩm</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="panel-body">
+                            <form asp-action="Create" asp-controller="Product">
+                                <fieldset>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Tên:</label>
+                                        <div class="col-sm-10">
+                                            <input asp-for="name" class="form-control" placeholder="Tên sản phẩm" />
+                                            <span asp-validation-for="name" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Đơn giá:</label>
+                                        <div class="col-sm-10">
+                                            <input asp-for="price" type="number" min="1" class="form-control" />
+                                            <span asp-validation-for="price" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Mô tả:</label>
+                                        <div class="col-sm-10">
+                                            <div class="summernote">
+                                                <h3>Zvip IN+</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Số lượng:</label>
+                                        <div class="col-sm-10">
+                                            <input asp-for="amount" type="number" min="1" class="form-control" />
+                                            <span asp-validation-for="amount" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Đơn vị tính:</label>
+                                        <div class="col-sm-10">
+                                            <input asp-for="unit" class="form-control" />
+                                            <span asp-validation-for="unit" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Hình ảnh</label>
+                                        <div class="col-sm-10">
+                                            <input asp-for="photo" class="form-control" />
+                                            <span asp-validation-for="photo" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Hình ảnh 1</label>
+                                        <div class="col-sm-10">
+                                            <input asp-for="photo" type="file" class="form-control" style="height:2.5rem" />
+                                            <span asp-validation-for="photo" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Hình ảnh 2</label>
+                                        <div class="col-sm-10">
+                                                <input asp-for="photo" type="file" class="form-control" style="height:2.5rem" />
+                                                <span asp-validation-for="photo" class="text-danger"></span>                                        
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-2 col-form-label">Hình ảnh 3</label>
+                                        <div class="col-sm-10">
+                                                <input asp-for="photo" type="file" class="form-control" style="height:2.5rem"/>
+                                                <span asp-validation-for="photo" class="text-danger"></span>                                       
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <button type="submit" class="btn btn-primary block full-width m-b">Thêm sản phẩm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
