@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ultilities\Ultilities.csproj" />
     <ProjectReference Include="..\ViewModel\ViewModel.csproj" />
   </ItemGroup>
 

@@ -7,36 +7,23 @@
 }
 
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
-
-
     <div class="ibox-content m-b-sm border-bottom">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label" for="product_name">Tên sản phẩm</label>
-                    <input type="text" id="product_name" name="product_name" value="" placeholder="Product Name" class="form-control">
-                </div>
+            <div class="col-md-6 col-xs-12">
+                <a class="btn btn-success" asp-action="Create" asp-controller="Product">Tạo mới</a>
             </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label class="col-form-label" for="price">Giá</label>
-                    <input type="number" id="price" name="price" value="" placeholder="Price" class="form-control">
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="form-group">
-                    <label class="col-form-label" for="quantity">Số lượng</label>
-                    <input type="number" id="quantity" name="quantity" value="" placeholder="Quantity" class="form-control">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="form-group">
-                    <label class="col-form-label" for="status">Status</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="1" selected>Enabled</option>
-                        <option value="0">Disabled</option>
-                    </select>
-                </div>
+            <div class="col-md-6 col-xs-12">
+                <form asp-action="Index" method="get">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <input type="text" value="@ViewBag.Keyword" name="keyword" class="form-control" />
+                        </div>
+                        <div class="cold-md-3">
+                            <button type="submit" class="btn btn-primary">Tìm</button>
+                            <button type="button" onclick="window.location.href='/Product/Index'" class="btn btn-dark">Reset</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -46,11 +33,9 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-content">
-
                     <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                         <thead>
                             <tr>
-
                                 <th data-toggle="true">Tên</th>
                                 <th data-toggle="phone">Hình ảnh</th>
                                 <th data-hide="all">Mô tả</th>
@@ -86,27 +71,15 @@
                                     <td>
                                         @Html.ActionLink("Chi tiết", "Delete", new { id = item.id }, new { @class = "btn btn-primary" })
                                     </td>
-
                                 </tr>
-
                             }
-
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="6" class="footable-visible">
-                                    <ul class="pagination float-right"></ul>
-                                </td>
-                            </tr>
-                        </tfoot>
                     </table>
-
                 </div>
+                @await Component.InvokeAsync("Pager", Model)
             </div>
         </div>
     </div>
-
-
 </div>
 <!-- Custom and plugin javascript -->
 <script src="js/inspinia.js"></script>

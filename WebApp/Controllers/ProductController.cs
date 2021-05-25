@@ -22,11 +22,21 @@ namespace WebApp.Controllers
             _productApiClient = productApiClient;
             _configuration = configuration;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex = 1,int pageSize =1)
         {
            
-            var data = await _productApiClient.GetAll();
-            return View(data);
+            var datajson = await _productApiClient.GetAll();
+
+            
+
+            var pagin = new PagedResult<ProductVm>()
+            {
+                data = datajson.data,
+                PageIndex = pageIndex,
+                PageSize = pageSize,
+                TotalRecords = datajson.data.Count,
+            };
+            return View(datajson);
         }
         [HttpGet]
         public  IActionResult Create()

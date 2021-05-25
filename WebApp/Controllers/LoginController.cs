@@ -40,6 +40,7 @@ namespace WebApp.Controllers
                 return View();
             }
             HttpContext.Session.SetString("User", result.data.name);
+           
 
             return RedirectToAction("Index", "Home");
         }
