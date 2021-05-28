@@ -31,7 +31,6 @@ namespace WebApp
             services.AddTransient<IProductApiClient, ProductApiClient>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddControllersWithViews();
-
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(60);

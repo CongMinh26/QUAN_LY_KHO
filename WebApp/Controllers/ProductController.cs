@@ -22,21 +22,31 @@ namespace WebApp.Controllers
             _productApiClient = productApiClient;
             _configuration = configuration;
         }
-        public async Task<IActionResult> Index(int pageIndex = 1,int pageSize =1)
+        public async Task<IActionResult> Index(int pageIndex = 1,int pageSize =2)
         {
            
             var datajson = await _productApiClient.GetAll();
 
-            
+            var item = datajson.data;
+            var dataitem =item.Skip((pageIndex - 1) * pageSize)
+                .Take(pageSize)
+                .Select(x=> new ProductVm() { 
+                name = x.name,
+                photo =x.photo,
+                unit = x.unit,
+                priceIm = x.priceIm,                
+                amount = x.amount
+                }).ToList();
 
             var pagin = new PagedResult<ProductVm>()
             {
-                data = datajson.data,
+                data = dataitem,
                 PageIndex = pageIndex,
                 PageSize = pageSize,
                 TotalRecords = datajson.data.Count,
             };
-            return View(datajson);
+
+            return View(pagin);
         }
         [HttpGet]
         public  IActionResult Create()
@@ -63,7 +73,7 @@ namespace WebApp.Controllers
             {
                 id = result.data.id,
                 name = result.data.name,
-                price = result.data.price,
+                priceIm = result.data.priceIm,
                 unit = result.data.unit,
                 amount= result.data.amount,
                 photo = result.data.photo,
@@ -90,7 +100,7 @@ namespace WebApp.Controllers
             {
                 id = result.data.id,
                 name = result.data.name,
-                price = result.data.price,
+                priceIm = result.data.priceIm,
                 unit = result.data.unit,
                 amount = result.data.amount,
                 photo = result.data.photo,

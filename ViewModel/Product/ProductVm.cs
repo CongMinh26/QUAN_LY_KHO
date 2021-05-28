@@ -11,6 +11,7 @@ namespace ViewModel.Product
         public string unit { get; set; }
         public int amount { get; set; }
         public string photo { get; set; }
-        public double price { get; set; }
+        public double priceIm { get; set; }
+        public double priceEx { get; set; }
     }
 }
