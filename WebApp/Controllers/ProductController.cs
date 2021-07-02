@@ -22,7 +22,7 @@ namespace WebApp.Controllers
             _productApiClient = productApiClient;
             _configuration = configuration;
         }
-        public async Task<IActionResult> Index(int pageIndex = 1,int pageSize =2)
+        public async Task<IActionResult> Index(int pageIndex = 1,int pageSize =10)
         {
            
             var datajson = await _productApiClient.GetAll();
